@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titan Boost - Members Area</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Titan Boost</h1>
+    </header>
+
+    <div class="container">
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Modules will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <div class="reembolso-container">
+        <a href="reembolso/index.html" class="btn-reembolso">REQUEST REFUND</a>
+    </div>
+
+    <script>
+        // Module data
+        const modulos = [
+            {
+                nome: "Main Delivery 1",
+                tipo: "Ebook", 
+                imagem: "img/modulo1.png", 
+                src: "https://untitled-3qdrbty.gamma.site/"
+            },
+            {
+                nome: "Main Delivery 2",
+                tipo: "Ebook",
+                imagem: "img/modulo2.png", 
+                src: "https://titan-boost-20-14fqdbp.gamma.site/"
+            },
+            {
+                nome: "Bonus Delivery 1",
+                tipo: "Ebook",
+                imagem: "img/bonus1.png", 
+                src: "https://the-5-positions-to-make--empj67b.gamma.site/"
+            },
+            {
+                nome: "Bonus Delivery 2",
+                tipo: "Ebook",
+                imagem: "img/bonus2.png", 
+                src: "https://the-lesbian-trick-auaavux.gamma.site/"
+            },
+            {
+                nome: "Bonus Delivery 3",
+                tipo: "Ebook",
+                imagem: "img/bonus3.png", 
+                src: "https://the-prolonged-orgasm-man-91vhnow.gamma.site/"
+            }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modulesGrid = document.getElementById("modulesGrid");
+            if (modulesGrid) {
+                modulos.forEach(modulo => {
+                    const moduleCard = document.createElement("div");
+                    moduleCard.classList.add("module-card");
+
+                    let link = "modulo.html";
+                    let params = `name=${encodeURIComponent(modulo.nome)}`;
+
+                    if (modulo.tipo === "Ebook") {
+                        params += `&type=ebook&src=${encodeURIComponent(modulo.src)}`;
+                    } else if (modulo.tipo === "Video Classes") {
+                        params += `&type=video&videos=${encodeURIComponent(JSON.stringify(modulo.videos))}`;
+                    }
+
+                    moduleCard.innerHTML = `
+                        <div class="module-image-container">
+                            <img src="${modulo.imagem || "img/placeholder.svg"}" alt="${modulo.nome}">
+                        </div>
+                        <a href="${link}?${params}" class="btn-access">Access Content</a>
+                    `;
+                    modulesGrid.appendChild(moduleCard);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
