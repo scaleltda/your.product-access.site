@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Content - Members Area</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pagina-modulo"> <!-- Added class for specific CSS -->
+    <header class="header header-modulo">
+        <a href="membros.html" class="btn-back-header">&#x2190; Back</a>
+        <!-- H1 title removed from here -->
+    </header>
+
+    <!-- Main content now directly below the header -->
+    <h2 id="moduleTitleDisplay" class="module-title-display visually-hidden">Loading Module...</h2>
+    
+    <div id="ebookContent" style="display: none;">
+        <iframe src="" allowfullscreen></iframe>
+    </div>
+
+    <div id="videoArea" class="video-area" style="display: none;">
+        <div class="video-player-section">
+            <div id="videoNavControls" class="video-nav-controls">
+                <button id="prevVideo" title="Previous Class" disabled>&lt; Previous</button>
+                <span id="currentVideoTitle" class="current-video-title">Class X of Y</span>
+                <button id="nextVideo" title="Next Class" disabled>Next &gt;</button>
+            </div>
+            <div id="videoPlayerEmbed">
+                <!-- Video iframe will be inserted here -->
+            </div>
+        </div>
+        <div id="videoPlaylistSection" class="video-playlist-section">
+            <h4>Module Classes</h4>
+            <ul id="videoPlaylist" class="video-list">
+                <!-- Video list will be populated here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

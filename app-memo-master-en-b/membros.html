@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo Master - Members Area</title> <!-- Updated tab title -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Memo Master</h1> <!-- Updated and centered header title via existing CSS -->
+    </header>
+
+    <div class="container">
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Modules will be inserted here via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Module data
+        const modulos = [
+            {
+                nome: "Memo Master 1.0",
+                tipo: "Ebook", 
+                imagem: "img/memo-master-v1.jpg", 
+                src: "https://memo-master-p10xzgf.gamma.site/"
+            },
+            {
+                nome: "Memo Master 2.0: Advanced Formula",
+                tipo: "Ebook",
+                imagem: "img/memo-master-v2.jpg", 
+                src: "https://memo-master-20-advanced--b249bww.gamma.site/"
+            },
+            {
+                nome: "Bonus 1: The Super Gut Code",
+                tipo: "Ebook",
+                imagem: "img/super-gut-code.jpg", 
+                src: "https://the-super-gut-code-3wfd8cw.gamma.site/"
+            },
+            {
+                nome: "Bonus 2: 101 Herbal Cures",
+                tipo: "Ebook",
+                imagem: "img/herbal-cures.jpg", 
+                src: "https://101-herbal-cures-s0z08gx.gamma.site/"
+            }
+            // Add more modules here as needed
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modulesGrid = document.getElementById("modulesGrid");
+            if (modulesGrid) {
+                modulos.forEach(modulo => {
+                    const moduleCard = document.createElement("div");
+                    moduleCard.classList.add("module-card");
+
+                    let link = "modulo.html";
+                    let params = `name=${encodeURIComponent(modulo.nome)}`;
+
+                    if (modulo.tipo === "Ebook") {
+                        params += `&type=ebook&src=${encodeURIComponent(modulo.src)}`;
+                    } else if (modulo.tipo === "Video Classes") {
+                        params += `&type=video&videos=${encodeURIComponent(JSON.stringify(modulo.videos))}`;
+                    }
+
+                    moduleCard.innerHTML = `
+                        <div class="module-image-container">
+                            <img src="${modulo.imagem || "img/placeholder.svg"}" alt="${modulo.nome}">
+                        </div>
+                        <a href="${link}?${params}" class="btn-access">Access Content</a>
+                    `;
+                    modulesGrid.appendChild(moduleCard);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+    <div class="reembolso-container">
+        <a href="reembolso/index.html" class="btn-reembolso">REQUEST REFUND</a>
+    </div>
+</body>
+</html>
+

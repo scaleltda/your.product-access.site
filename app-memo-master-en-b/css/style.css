@@ -1,0 +1,434 @@
+/* Reset e Estilos Globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f8f0;
+    color: #2d4a2d;
+    line-height: 1.6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Cabeçalho Principal */
+.header {
+    width: 100%;
+    background-color: #2d5a2d;
+    color: white;
+    padding: 1em 1.5em;
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Alinha itens verticalmente */
+    justify-content: space-between; /* Espaça o botão de voltar e o título */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Faz o header fixo no topo */
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.6em; 
+    text-align: center; 
+    flex-grow: 1; 
+}
+
+.btn-back-header {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6em; 
+    font-weight: bold; 
+    padding: 0.5em 0.8em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 1em; 
+}
+
+.btn-back-header:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Estilos da Página de Login */
+.login-container {
+    background-color: #fff;
+    padding: 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%; 
+    max-width: 400px;
+    margin: 3em auto; 
+}
+
+.logo-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #e8f5e8;
+    border-radius: 8px;
+    margin: 0 auto 2em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: #4a7c4a;
+    border: 2px dashed #7db87d;
+    overflow: hidden;
+}
+
+.logo-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.login-container h2 {
+    margin-bottom: 1.5em;
+    color: #2d5a2d;
+    font-size: 1.5em;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 0.5em;
+    text-align: left;
+    font-weight: 600;
+    color: #2d5a2d;
+}
+
+.login-container input[type="email"] {
+    width: 100%;
+    padding: 0.9em;
+    margin-bottom: 0.5em;
+    border: 1px solid #7db87d;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.login-container input[type="email"]:focus {
+    border-color: #2d5a2d;
+    box-shadow: 0 0 0 0.2rem rgba(45,90,45,.25);
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 0.9em;
+    background-color: #2d5a2d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.login-container button:hover {
+    background-color: #4a7c4a; 
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    text-align: left;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+    min-height: 1.2em;
+}
+
+/* Estilos para a Área de Membros */
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2em;
+    padding: 2em; /* Adicionado padding ao redor da grid */
+}
+
+.module-card {
+    background-color: #fff;
+    border: 1px solid #7db87d;
+    border-radius: 10px;
+    padding: 1.5em;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.module-card .module-image-container {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 1em;
+}
+
+.module-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.module-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.3em;
+    color: #2d5a2d;
+}
+
+.module-card .btn-access {
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    background-color: #4a7c4a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.module-card .btn-access:hover {
+    background-color: #2d5a2d;
+}
+
+/* Estilos para a Página do Módulo (modulo.html - NOVO LAYOUT FULL-WIDTH) */
+.pagina-modulo { 
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    margin: 0; 
+    overflow: hidden; 
+}
+
+.header-modulo { 
+    flex-shrink: 0; 
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+#ebookContent, 
+#videoArea {
+    flex-grow: 1; 
+    overflow: hidden; 
+    width: 100%; 
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column; 
+}
+
+#ebookContent iframe {
+    width: 100%; 
+    height: 100%; 
+    border: none;
+    display: block; 
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.video-player-section {
+    flex-grow: 1; 
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.video-player-section iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+.video-playlist-section {
+    width: 300px; 
+    min-width: 250px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    border-left: 1px solid #dee2e6;
+    padding: 1em;
+    flex-shrink: 0; 
+}
+
+.video-playlist-section h4 {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+    color: #2d5a2d;
+    font-size: 1.2em;
+}
+
+.video-list {
+    list-style: none;
+    padding: 0;
+}
+
+.video-list li {
+    padding: 0.8em 1em;
+    border-bottom: 1px solid #7db87d;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.video-list li:last-child {
+    border-bottom: none;
+}
+
+.video-list li:hover {
+    background-color: #e8f5e8;
+}
+
+.video-list li.active-video {
+    background-color: #2d5a2d;
+    color: white;
+    font-weight: 600;
+}
+
+.video-list li.active-video:hover {
+    background-color: #1a3a1a;
+}
+
+.video-list .video-item-title {
+    display: block;
+}
+
+.video-nav-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #e8f5e8;
+    border-radius: 6px;
+    flex-shrink: 0; 
+}
+
+.video-nav-controls button {
+    padding: 0.6em 1em;
+    background-color: #2d5a2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.video-nav-controls button:disabled {
+    background-color: #7db87d;
+    cursor: not-allowed;
+}
+
+.video-nav-controls button:hover:not(:disabled) {
+    background-color: #1a3a1a;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.3em;
+        /* text-align: left; (removido para manter centralizado se possível) */
+        margin-left: 0.5em; /* Pode precisar de ajuste se o título não centralizar */
+    }
+    .video-playlist-section {
+        width: 100%; 
+        height: auto; 
+        max-height: 40vh; 
+        border-left: none;
+        border-top: 1px solid #dee2e6;
+    }
+    .modules-grid {
+        padding: 1em; /* Menor padding em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container h2 {
+        font-size: 1.3em;
+    }
+    .login-container input[type="email"],
+    .login-container button {
+        padding: 0.8em;
+        font-size: 0.95em;
+    }
+    .module-card h3 {
+        font-size: 1.15em;
+    }
+    .module-card .btn-access {
+        padding: 0.6em 1.2em;
+        font-size: 0.95em;
+    }
+    .header h1 {
+        font-size: 1.1em;
+    }
+    .btn-back-header {
+        font-size: 1.1em; /* Aumentado um pouco para melhor toque, igual ao h1 */
+        padding: 0.4em 0.6em;
+    }
+     .modules-grid {
+        gap: 1em; /* Menor gap em telas muito pequenas */
+    }
+}
+
+
+
+/* Estilos para o Botão de Reembolso */
+.reembolso-container {
+    text-align: center; /* Centraliza o botão */
+    padding: 2em 0; /* Adiciona um espaçamento acima e abaixo do botão */
+}
+
+.btn-reembolso {
+    display: inline-block;
+    padding: 0.8em 1.8em;
+    background-color: #dc3545; /* Vermelho */
+    color: #fff; /* Branco */
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-reembolso:hover {
+    background-color: #c82333; /* Vermelho mais escuro para hover */
+}
+
+

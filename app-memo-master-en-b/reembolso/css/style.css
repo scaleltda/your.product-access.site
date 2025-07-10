@@ -1,0 +1,279 @@
+/* Reset e Estilos Globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f8f0; /* brand-background */
+    color: #2d4a2d; /* brand-text-primary */
+    line-height: 1.6;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.card {
+    background-color: #ffffff; /* brand-surface */
+    padding: 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-step {
+    display: none; /* Oculta todas as etapas por padrão */
+}
+
+/* Regra geral para tornar uma etapa ativa visível */
+.form-step.active-step {
+    display: block; /* Padrão para as etapas de formulário baseadas em <form> */
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Estilos para o conteúdo interno das etapas centralizadas (Processando, Concluído)
+   Não define 'display' aqui, apenas o layout interno quando visível. */
+.step-centered {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2em 0;
+}
+
+/* Se uma etapa centralizada (que é um <div>) estiver ativa, ela deve usar display: flex */
+div.form-step.step-centered.active-step {
+    display: flex; /* Sobrescreve o display:block para estas etapas específicas */
+}
+
+.step-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #2d5a2d; /* brand-primary */
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.step-description {
+    color: #4a7c4a; /* brand-text-secondary */
+    margin-bottom: 1.5em;
+    text-align: center;
+    font-size: 0.95em;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    color: #4a7c4a; /* brand-text-secondary */
+    font-size: 0.9em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.9em;
+    border: 1px solid #7db87d; /* brand-input-border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #2d4a2d; /* brand-text-primary */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #2d5a2d; /* brand-input-focus-border */
+    box-shadow: 0 0 0 0.2rem rgba(45, 90, 45, .25);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.required-asterisk {
+    color: #dc3545; /* brand-danger */
+    margin-left: 2px;
+}
+
+.error-message {
+    color: #dc3545; /* brand-danger */
+    font-size: 0.85em;
+    margin-top: 0.3em;
+    min-height: 1.2em; /* Para evitar saltos de layout */
+}
+
+.form-actions {
+    margin-top: 2em;
+}
+
+.button-group {
+    display: flex;
+    gap: 1em;
+}
+
+.btn {
+    padding: 0.9em 1.5em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: #2d5a2d; /* brand-primary */
+    color: #ffffff; /* brand-text-on-primary */
+}
+
+.btn-primary:hover {
+    background-color: #4a7c4a; /* brand-primary-hover */
+}
+
+.btn-secondary {
+    background-color: #ffffff; /* brand-surface */
+    color: #2d5a2d; /* brand-primary */
+    border: 1px solid #2d5a2d; /* brand-primary */
+}
+
+.btn-secondary:hover {
+    background-color: #f0f8f0; /* Um cinza claro para hover */
+    color: #1a3a1a; /* Um verde mais escuro para texto no hover */
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+/* Spinner para Etapa de Processamento */
+.spinner-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5em;
+}
+
+.spinner-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid rgba(45, 90, 45, 0.2); /* brand-primary com alpha */
+    border-radius: 50%;
+}
+
+.spinner-core {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;
+    border-top-color: #2d5a2d; /* brand-primary */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.processing-text {
+    font-size: 1.2em;
+    color: #4a7c4a; /* brand-text-secondary */
+}
+
+/* Ícone de Concluído */
+.completed-icon-container {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #4a7c4a; /* brand-secondary (verde do botão de acesso) */
+    margin-bottom: 1.5em;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.completed-icon {
+    width: 40px;
+    height: 40px;
+    color: #ffffff; /* brand-text-on-primary */
+}
+
+/* Animações */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .card {
+        padding: 1.5em;
+    }
+    .step-title {
+        font-size: 1.5em;
+    }
+    .btn {
+        font-size: 0.95em;
+        padding: 0.8em 1.2em;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+
