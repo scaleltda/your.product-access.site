@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Visualizador de PDF</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #0b0b0c;
+      color: #e7e7ea;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    header {
+      padding: 12px 16px;
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+      background: #111114; border-bottom: 1px solid #26262b;
+    }
+    header h1 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .spacer { flex: 1; }
+    .btn, a.btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .55rem .9rem; border-radius: 10px;
+      border: 1px solid #2d2d34; text-decoration: none; color: inherit;
+      background: #1a1a20; cursor: pointer;
+    }
+    .btn:hover { background: #202028; }
+    .viewer {
+      height: calc(100vh - 58px);
+      width: 100%;
+      border: 0;
+      background: #1a1a20;
+    }
+    .fallback {
+      padding: 24px; text-align: center;
+    }
+    .hint { opacity: .8; font-size: .9rem; }
+    input[type="text"] {
+      background: #141419; border: 1px solid #2d2d34; color: inherit;
+      padding: .5rem .7rem; border-radius: 10px; min-width: 220px;
+    }
+    @media (max-width: 560px) {
+      header { gap: 8px; }
+      input[type="text"] { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PDF Viewer</h1>
+    <div class="spacer"></div>
+
+    <!-- Campo opcional para trocar o arquivo via querystring -->
+    <label for="fileInput" class="hint">Arquivo:</label>
+    <input id="fileInput" type="text" placeholder="WAH.pdf" title="Nome do PDF dentro de /content" />
+    <button id="openBtn" class="btn" title="Abrir o PDF especificado">Abrir</button>
+
+    <a id="downloadBtn" class="btn" href="#" download title="Baixar o PDF">Baixar</a>
+  </header>
+
+  <!-- Iframe usa o visualizador nativo do navegador -->
+  <iframe id="pdfFrame" class="viewer" loading="lazy"></iframe>
+
+  <noscript>
+    <div class="fallback">
+      <p>Este site precisa de JavaScript para exibir o PDF embutido.</p>
+      <p><a href="content/WAH.pdf">Clique aqui para abrir o arquivo diretamente.</a></p>
+    </div>
+  </noscript>
+
+  <script>
+    // Padrão: WAH.pdf (mude aqui se quiser outro padrão)
+    const DEFAULT_FILE = "WAH.pdf";
+
+    const params = new URLSearchParams(window.location.search);
+    const fileFromQuery = params.get("file");
+    const fileName = fileFromQuery ? decodeURIComponent(fileFromQuery) : DEFAULT_FILE;
+
+    // Monta o caminho dentro da pasta 'content'
+    const pdfPath = `content/${fileName}`;
+
+    // Aponta o iframe para o PDF (com toolbar do viewer do navegador)
+    const frame = document.getElementById("pdfFrame");
+    frame.src = pdfPath + "#toolbar=1&navpanes=0&scrollbar=1";
+
+    // Preenche UI e ação do botão "Baixar"
+    const input = document.getElementById("fileInput");
+    const openBtn = document.getElementById("openBtn");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    input.value = fileName;
+    downloadBtn.href = pdfPath;
+
+    // Permite trocar o arquivo rapidamente sem editar código:
+    // digite o nome do arquivo (ex.: guia.pdf) e clique "Abrir"
+    openBtn.addEventListener("click", () => {
+      const newFile = input.value.trim() || DEFAULT_FILE;
+      const url = new URL(window.location.href);
+      url.searchParams.set("file", newFile);
+      window.location.href = url.toString();
+    });
+
+    // Se o iframe falhar (alguns navegadores móveis bloqueiam PDF embutido),
+    // mostramos um fallback simples com link.
+    frame.addEventListener("error", () => {
+      document.body.innerHTML = `
+        <div class="fallback">
+          <h2>Não foi possível embutir o PDF</h2>
+          <p>Alguns navegadores móveis não exibem PDFs embutidos. Você ainda pode abrir o arquivo diretamente:</p>
+          <p><a class="btn" href="${pdfPath}">Abrir ${fileName}</a></p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
